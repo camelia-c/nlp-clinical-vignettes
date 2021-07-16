@@ -173,6 +173,36 @@ def html_medication(doc):
     
     return html_medication
 
+
+
+def html_ddi(book_page, list_cases):
+    """check in th dict corresponding to specified book_page whether any interaction between taken medication is known"""
+    html_ddi = ""
+    
+    dict_case = [dict_page for dict_page in list_cases  if dict_page["book_page"] == book_page][0]
+    
+    if len(dict_case["drugdrug_interactions"]) > 0:
+        html_ddi += "<h4> Drug-drug interactions </h4>"
+        html_ddi += "<ul>"
+        
+        for item in dict_case["drugdrug_interactions"]:
+            s1 = "<b>{med1}({med1id})</b> and <b>{med2}({med2id})</b>".format(med1 = item["drug1_name"], med1id = item["drug1_id"],
+                                                                         med2 = item["drug2_name"], med2id = item["drug2_id"]                                                                         
+                                                                        )
+            s2 = " ===> ISSUE: {issue}".format(issue = item["interaction"])
+            
+            html_ddi += """<li style="color:#f00;">
+                              <span style="color:#f00;">{msg1}</span> <br/>
+                              <span style="color:#00f;">{msg2}</span>
+                           </li>""".format(msg1 = s1, msg2=s2)
+            
+            print("INTERACTION:", s2)
+            
+            
+        html_ddi += "</ul>"
+    
+    return html_ddi
+
 #--------------------------------------------------------------------------
 
 def generate_pdf_vignettes(doc_bin, list_cases):
@@ -190,6 +220,8 @@ def generate_pdf_vignettes(doc_bin, list_cases):
         html_diseases_statuses = html_diseases(doc)
         
         html_medication_table = html_medication(doc)
+        
+        html_ddi_optional = html_ddi(book_page = doc._.BOOK_PAGE, list_cases = list_cases)
         
         #note: we use double curly baces in the style to escape {, otherwise ued for placeholders
         html_content = """
@@ -216,6 +248,8 @@ def generate_pdf_vignettes(doc_bin, list_cases):
                
                <h3> Medication</h3>
                {medic}
+               
+               {ddi}
 
         </body>
         </html>
@@ -223,7 +257,8 @@ def generate_pdf_vignettes(doc_bin, list_cases):
         """.format(bp = doc._.BOOK_PAGE,
                    ents = html_highlighted_text, 
                    issues=html_diseases_statuses,
-                   medic = html_medication_table
+                   medic = html_medication_table,
+                   ddi = html_ddi_optional
                   )
         
         with open(FOLDER_REPORTS + html_file, "w") as fh:
