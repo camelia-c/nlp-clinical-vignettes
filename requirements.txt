@@ -1,0 +1,11 @@
+tika==1.24
+pandas
+scispacy==0.4.0
+tabulate==0.8.9
+https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.4.0/en_ner_bc5cdr_md-0.4.0.tar.gz
+https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.4.0/en_ner_bionlp13cg_md-0.4.0.tar.gz
+intervaltree==3.1.0
+pyjq==2.5.2
+git+https://github.com/camelia-c/medspacy.git@spacy-v3
+deplacy==1.9.1
+pdfkit==0.6.1
