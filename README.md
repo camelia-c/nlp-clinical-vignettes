@@ -38,8 +38,7 @@ Along with MLOps, the platform also provides access to its Knowledge Graph, thus
 **I want to acknowledge the data sources**, without which this project wouldn't have had the same contents: 
 
 * The DrugBank Open Data ( https://go.drugbank.com/releases/latest#open-data ) 
-* The Bio2RDF Virtuoso server ( https://drugbank.bio2rdf.org/sparql? ) provided me the opportunity to discover drug-drug interactions by writing SPARQL queries. 
+* The Bio2RDF Virtuoso server ( https://drugbank.bio2rdf.org/sparql ) provided me the opportunity to discover drug-drug interactions by writing SPARQL queries. 
 * The book "Interesting Clinical Vignettes: 101 Ice Breakers for Medical Rounds"  by the team at Texas Tech University Health Sciences Center ( https://www.ttuhsc.edu/clinical-research/vignettes.aspx )  from which I extracted the clinical vignettes
-
 
 

@@ -4,11 +4,9 @@
 
 NLP for cllnical vignettes, extracting from text various types of biomedical entities, the clinical history, current medication and related drugs interactions.
 
-This project joins the set of cognitive services applying NLP to clinical data, like Amazon Comprehend Medical, IBM Watson Annotator for Clinical Data, Azure Text Analytics for Health, etc.  
-
 The final results are in `data/vignettes_reports` both in PDF and in HTML format.  
 
-The notebook "notebooks/Renku_KG.ipynb" is a companion to this README and it contains some insights related to metadata stored about this project, after steps 1-to-8 were all executed.
+The notebook "notebooks/Renku_KG.ipynb" is a companion to this README and it contains some insights related to metadata stored about this project, after steps 1-to-9 were all executed.
 
 
 ### GitLab repo for new project
@@ -368,7 +366,7 @@ renku log data/outputs/medication_bner_selection1.json
 
 ### Step 4
 
-Enrich the vignette with information about drug-drug interactions queried with SPARQL from Bio2RDF Virtuoso server (https://drugbank.bio2rdf.org/sparql?).  
+Enrich the vignette with information about drug-drug interactions queried with SPARQL from Bio2RDF Virtuoso server (https://drugbank.bio2rdf.org/sparql).  
 For the each drug in the current medication taken by the pacient of each clinical vignette, list the known interactions with other drugs.  
 
 Note: because of some SSL Certificate issues with the Virtuoso server, namely:  
@@ -597,10 +595,51 @@ renku run \
 
 ```
 
+### Step 9
 
-### Step 9 
+A parameterized notebook (executed using Papermill) allows the interactive exploration of results stored in the Spacy DocBin outputed at step 7 above.
 
-Notebook to query the Renku Knowledge Graph after we concluded steps 1-to-8.
+```
+echo "papermill==2.3.3" >> requirements.txt
+echo "pyfiglet==0.7" >> requirements.txt
+
+pip install -r requirements.txt
+
+which papermill
+###/usr/local/bin/papermill
+
+
+touch notebooks/ParameterizedNotebook.ipynb
+
+rm -f notebooks/ParametrizedNotebook.ran.ipynb 
+
+
+renku run \
+    --name step9_spacy_notebook \
+    --description "parameterized notebook to be executed with papermill for a specified book page and sentence in focus, visualizing dependency graph, tokens extensions, entities" \
+    --keyword "papermill,spacy" \
+    papermill notebooks/ParametrizedNotebook.ipynb \
+          notebooks/ParametrizedNotebook.pag14_sent2.ipynb \
+          -p input_path data/outputs/structured_bner_selection1.bin \
+          -p selected_page 14 \
+          -p sentence_in_focus 2
+          
+          
+```
+
+
+### Step 10 
+
+Notebook to query the Renku Knowledge Graph after we concluded steps 1-to-9.
+
+```
+echo "columnize==0.3.10" >> requirements.txt
+echo "pyyaml==5.4.1" >> requirements.txt
+
+pip install -r requirements.txt
+
+touch notebooks/Renku_KG.ipynb
+```
 
 
 # Appendices
