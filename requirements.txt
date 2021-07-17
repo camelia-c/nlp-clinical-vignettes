@@ -9,3 +9,6 @@ pyjq==2.5.2
 git+https://github.com/camelia-c/medspacy.git@spacy-v3
 deplacy==1.9.1
 pdfkit==0.6.1
+papermill==2.3.3
+columnize==0.3.10
+pyyaml==5.4.1

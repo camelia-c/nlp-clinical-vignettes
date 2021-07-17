@@ -13,14 +13,20 @@ FROM ${RENKU_BASE_IMAGE}
 USER root
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    apt-utils \
-    vim  \
-    default-jre \
-    jq \
-    autoconf automake libtool  \
-    tree  \
-    graphviz  \
-    wkhtmltopdf 
+        apt-utils \
+        vim  \
+        default-jre \
+        jq \
+        autoconf automake libtool  \
+        tree  \
+        graphviz  \
+        wkhtmltopdf \
+        figlet \
+        bsdmainutils \
+        software-properties-common  && \
+    curl -L https://github.com/mikefarah/yq/releases/download/2.4.0/yq_linux_amd64 -o /usr/local/bin/yq && \
+    chmod +x /usr/local/bin/yq
+
     
 USER ${NB_USER}
 
