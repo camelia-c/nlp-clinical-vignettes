@@ -13,7 +13,7 @@ Starting from raw text in a PDF file, the result is a content-rich PDF (in folde
 - medication summary, including its purpose (in relation to which disease) as well as pointers to DrugBank and RxNorm knowledge bases  
 - alerts about drug-drug interactions between the medication mentioned in the medical case  
 
-This project thus joins the set of cognitive services applying NLP to clinical data, like Amazon Comprehend Medical, IBM Watson Annotator for Clinical Data, Azure Text Analytics for Health, etc. 
+![result](https://github.com/camelia-c/nlp-clinical-vignettes/blob/main/img_INPUT_OUTPUT_p208.png?raw=true)
 
 In this implementation I used:  
 
@@ -22,6 +22,12 @@ In this implementation I used:
 - MedSpacy for matching custom rules involving disease entities
 
 Moreover, technologies of Tika, PDFKit, PyJQ, SPARQL were employed.   
+
+![workflow](https://github.com/camelia-c/nlp-clinical-vignettes/blob/main/img_WORKFLOW_SKETCH.png?raw=true)
+
+This project thus joins the set of cognitive services applying NLP to clinical data, like Amazon Comprehend Medical, IBM Watson Annotator for Clinical Data, Azure Text Analytics for Health, etc. 
+
+<img src="https://github.com/camelia-c/nlp-clinical-vignettes/blob/main/Medical_NLP_landscape.png?raw=true" width="600" height="150">
 
 
 
