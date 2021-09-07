@@ -220,35 +220,7 @@ This command has 2 parts:
     
 So far, we can see the data lineage with:
 
-```
-± |master ✓| → renku log
-*    600f1920 data/outputs/vignettes_selection1.json
-|\
-| \
-| |\
-+-+---*  5dab203f .renku/workflow/8710de739c144d02a80ca83d8f663502_python.yaml
-| | |/
-| * |  fddc3dbb data/book_clinical_cases/JMD-Cases-of-Interest.pdf
-| | |           (part of data/book_clinical_cases directory)
-| * |  fddc3dbb data/book_clinical_cases
-| | |           (part of data directory)
-| @ |  fddc3dbb (latest -> 5dab203f) data
-|  /
-| | @  50659b8b requirements.txt
-* |  50659b8b src/py_scripts/extract_book_pages.py
-| |           (part of src/py_scripts directory)
-| | @  50659b8b README.md
-* |  50659b8b src/py_scripts
-| |           (part of src directory)
-@ |  50659b8b src
- /
-*  c7a07efb data/tmp_files/pages_selection.txt
-|           (part of data/tmp_files directory)
-| @  c7a07efb (latest -> 50659b8b) README.md
-*  c7a07efb data/tmp_files
-|           (part of data directory)
-@  c7a07efb (latest -> 5dab203f) data
-```
+![prov](https://github.com/camelia-c/nlp-clinical-vignettes/blob/main/img_PROVENANCE.png?raw=true)
 
 We can also inspect the YAML file:
 
