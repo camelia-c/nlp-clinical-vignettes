@@ -4,8 +4,6 @@
 
 NLP for cllnical vignettes, extracting from text various types of biomedical entities, the clinical history, current medication and related drugs interactions.
 
-The final results are in `data/vignettes_reports` both in PDF and in HTML format.  
-
 The notebook "notebooks/Renku_KG.ipynb" is a companion to this README and it contains some insights related to metadata stored about this project, after steps 1-to-9 were all executed.
 
 
