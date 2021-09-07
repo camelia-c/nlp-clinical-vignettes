@@ -642,43 +642,17 @@ touch notebooks/Renku_KG.ipynb
 ```
 
 
-# Appendices
-
-### Appendix 1
-
-At Linux level, setup to be added to Dockerfile
-
-```
-apt-get update
-
-apt-get install default-jre
-```
-
-as well as :
-
-```
-apt-get install jq \
-                autoconf \
-                libtool  \
-                tree  \
-                graphviz  \
-                wkhtmltopdf 
-```
-
-as well as running:
-
-```
-python -m spacy download en_core_web_lg
-```
 
 
-### Appendix 2 
+## Appendix  
 
 This is an explanation in relation to consolidation stage (step 6) of the workflow.   
-Exercise online at https://jqplay.org/   
-Sidenote on PyJq expression: suppose we have a toy json of :   
+Exercise online at https://jqplay.org/    
+
+   
    
 ```
+### Suppose we have a toy json of :
 {
   "a": [
     { "bp": 10,  "txt": "aaa"},
@@ -691,7 +665,7 @@ Sidenote on PyJq expression: suppose we have a toy json of :
 }
 
 
-### expression "[.  | to_entries[] |  .key as $k | .value[] += {"model" : $k} ]"  converts it to:
+### PYJQ expression "[.  | to_entries[] |  .key as $k | .value[] += {"model" : $k} ]"  converts it to:
 
 [{
   "key": "a",
